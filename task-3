@@ -1,0 +1,5 @@
+1) db.applicans.find({scores: {$elemMatch: {score: { $gt: 87, $lt: 93}}}}).pretty()
+
+2) db.applicans.aggregate([{$unwind: "$scores"}, {$match: {$and: [{"scores.score": {$gt: 90}},{"scores.type": "exam"}]}}]).pretty()
+
+3) db.applicans.update({name: "Dusti Lemmond"}, {$set: {accepted: true}}, { multi: true })
